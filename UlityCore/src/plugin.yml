@@ -1,0 +1,85 @@
+author: 360matt, Ulity
+name: UlityCore
+version: 1.0.0
+description: Librairie de fonctions pour les plugins d'Ulity
+main: fr.ulity.core.bukkit.mainBukkit
+
+commands:
+  ulitycore:
+    aliases:
+      - uc
+    description: Commande informative et gestionnelle du plugin
+  broadcast:
+    permission:
+     - admin
+     - mod
+     - dev
+    aliases:
+     - bc
+  clc:
+    permission:
+     - admin
+     - mod
+     - dev
+    aliases: []
+  day:
+    permission: "admin"
+    aliases: []
+  night:
+    permission: "admin"
+    aliases: []
+  fly:
+    permission:
+     - admin
+     - dev
+     - cmd.fly
+    aliases: []
+  gamemode:
+    permission:
+     - admin
+     - dev
+     - cmd.gamemode
+    aliases:
+     - gm
+  gmc:
+    permission:
+     - admin
+     - dev
+     - cmd.gmc
+    aliases: []
+  gmp:
+    permission:
+     - admin
+     - dev
+     - cmd.gmp
+    aliases: []
+  gma:
+    permission:
+     - admin
+     - dev
+     - cmd.gma
+    aliases: []
+  gms:
+    permission:
+     - admin
+     - dev
+     - cmd.gms
+    aliases: []
+  importlang:
+    permission:
+     - admin
+    aliases: []
+  protect:
+    permission:
+     - admin
+     - builder
+     - cmd.protect
+    aliases:
+     - wp
+  heal:
+    permission:
+     - admin
+     - cmd.heal
+    aliases:
+     - wp
+     

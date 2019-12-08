@@ -1,0 +1,114 @@
+lang:
+  fr: "French"
+  en: "British"
+msg:
+   not_opped:
+     fr: "&cVous n'avez pas les privilèges néccessaires"
+     en: "You are not allowed to make this"
+   plugin_reloaded:
+     fr: "&bUlityCore &7a bien été rechargé"
+     en: "&bUlityCore &7has been reloaded successfuly"
+   actual_lang:
+     fr: "&7La langue actuelle est le &6Français (FR)"
+     en: "&7The actual language is &6English (US)"
+   lang_modified:
+     fr: "&7La langue a bien été modifiée"
+     en: "&7The language has been successfully changed"
+   empty_arg:
+     fr: "&cOoh non, l'argument est vide"
+     en: "Uuh no, this argument is empty"
+   invalid_arg:
+     fr: "&cOoh non, l'argument %arg% est invalide"
+     en: "Uuh no, argument %arg% is invalid"
+   ChatClear:
+     fr: "&7Le chat a été clear par &b%staff% pour &6%reason%"
+     en: "&7Chat cleared by &b%staff% so that &6%reason%"
+   TimeChanged:
+     fr: "&7L'heure a été changée en &e%time% &7dans le monde &5%world%"
+     en: "&7Hour has been changed to &e%time% &7in world &5%world%"
+   InvalidPlayer:
+     fr: "&7le joueur &c%name% &7est invalide"
+     en: "&7The player &c%name% &7is invalid"
+   FlyNotification:
+     fr: "&7Mode fly %stat%"
+     en: "&7Fly mod %stat%"
+   ChangeFlyOther:
+     fr: "&7Le mode fly de &b%name% &7est %stat%"
+     en: "&7The fly mod of &b%name% was %stat%"
+   TempReloaded:
+     fr: "&7Les variables temporaire ont bien étés rechargés"
+     en: "&7temporary datas was successfully reloaded"
+   CantEditMap:
+     fr: "&cVous ne pouvez pas éditer les blocs dans ce monde"
+     en: "&cYou cannot edit blocks in this world"
+   InGameOnly:
+     fr: "&cVous ne pouvez pas executer cette commande depuis la console"
+     en: "&cYou can't make this command within console"
+   ProtectCommand:
+     fr: "&7Le mode édition du monde est %stat%"
+     en: "&7The edition mod is %stat%"
+food:
+  FoodNotification:
+    fr: "&7Votre niveau de nourriture vient de se &6remplir"
+    en: "&7Your food level was set to maximum"
+  FoodNotificationOther:
+    fr: "&7Le niveau de nourriture de &b%name% &7vient de se &6remplir"
+    en: "&b%name%&7's food level was set to &6maximum"
+
+expressions:
+  console:
+    fr: "la console"
+    en: "the console"
+  unknown_reason:
+    fr: "raison inconnue"
+    en: "unknown reason"
+  day:
+    fr: "jour"
+    en: "day"
+  night:
+    fr: "nuit"
+    en: "night"
+  invariable:
+    fr: "invariable"
+    en: "invariable"
+  syntax:
+    fr: "syntaxe"
+    en: "syntax"
+  enabled:
+    fr: "activé"
+    en: "enabled"
+  disabled:
+    fr: "désactivé"
+    en: "disabled"
+gamemode:
+  GamemodeNotification:
+    fr: "&7Votre mode de jeu a été changé en &6%mod%"
+    en: "&7Your gamemode was changed to &6%mod%"
+  ChangeGamemodeOther:
+    fr: "&7Le mode de jeu de &b%name% &7a été changé en &6%mod%"
+    en: "&7The gamemode of &b%name% &7was changed to &6%m%"
+  InvalidGamemode:
+    fr: "&7Le mode de jeu &6%mod% &7est &cinvalide"
+    en: "&7The &6%mod% gamemode &7is &cinvalid"
+  creative:
+    fr: "créatif"
+    en: "creative"
+  survival:
+    fr: "survie"
+    en: "survival"
+  adventure:
+    fr: "aventure"
+    en: "adventure"
+  spectator:
+    fr: "spéctateur"
+    en: "spectator"
+type:
+  player:
+    fr: "joueur"
+    en: "player"
+  mod:
+    fr: "mode"
+    en: "mod"
+  world:
+    fr: "monde"
+    en: "world"
