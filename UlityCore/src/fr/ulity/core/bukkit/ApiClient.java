@@ -1,5 +1,7 @@
 package fr.ulity.core.bukkit;
 
+import java.io.InputStream;
+
 import javax.annotation.Nullable;
 
 import org.bukkit.plugin.Plugin;
@@ -8,12 +10,12 @@ import org.bukkit.plugin.Plugin;
 public class ApiClient {
 	static Plugin plugin;
 	static Api apiClass;
-	private static fr.ulity.core.bukkit.Lang lang;
-	private static fr.ulity.core.utils.IndexUtils utils;
-	private static fr.ulity.core.bukkit.animations.IndexAnimations animations;
-	private static fr.ulity.core.bukkit.utils.Permissions permissions;
-	private static fr.ulity.core.bukkit.Temp temp;
-	private static fr.ulity.core.bukkit.Config config;
+	static fr.ulity.core.bukkit.Lang lang;
+	static fr.ulity.core.utils.IndexUtils utils;
+	static fr.ulity.core.bukkit.animations.IndexAnimations animations;
+	static fr.ulity.core.bukkit.utils.Permissions permissions;
+	static fr.ulity.core.bukkit.Temp temp;
+	static fr.ulity.core.bukkit.Config config;
 
 	static {
 		System.out.println("§cLoading API ... / Chargement de l'API");
@@ -32,6 +34,19 @@ public class ApiClient {
 			animations = new fr.ulity.core.bukkit.animations.IndexAnimations();
 			permissions = new fr.ulity.core.bukkit.utils.Permissions();
 			temp = new fr.ulity.core.bukkit.Temp();
+			
+			InputStream langToImport = null;
+			
+			try {
+				langToImport = ApiClient.class.getResourceAsStream("language.yml");
+			}
+			catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+			
+			if (langToImport != null) 
+				lang.importFromFile(langToImport);
+			
 		}
 	}
 	
