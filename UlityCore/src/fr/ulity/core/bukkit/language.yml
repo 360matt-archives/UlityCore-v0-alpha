@@ -21,8 +21,8 @@ msg:
      fr: "&cOoh non, l'argument %arg% est invalide"
      en: "Uuh no, argument %arg% is invalid"
    ChatClear:
-     fr: "&7Le chat a été clear par &b%staff% pour &6%reason%"
-     en: "&7Chat cleared by &b%staff% so that &6%reason%"
+     fr: "&7Le chat a été clear par &b%staff% &7pour &6%reason%"
+     en: "&7Chat cleared by &b%staff% &7so that &6%reason%"
    TimeChanged:
      fr: "&7L'heure a été changée en &e%time% &7dans le monde &5%world%"
      en: "&7Hour has been changed to &e%time% &7in world &5%world%"
@@ -47,13 +47,13 @@ msg:
    ProtectCommand:
      fr: "&7Le mode édition du monde est %stat%"
      en: "&7The edition mod is %stat%"
-food:
-  FoodNotification:
-    fr: "&7Votre niveau de nourriture vient de se &6remplir"
-    en: "&7Your food level was set to maximum"
-  FoodNotificationOther:
-    fr: "&7Le niveau de nourriture de &b%name% &7vient de se &6remplir"
-    en: "&b%name%&7's food level was set to &6maximum"
+heal:
+  HealNotification:
+    fr: "&7Votre niveau de santé vient de se &6remplir"
+    en: "&7Your healt level was set to maximum"
+  HealNotificationOther:
+    fr: "&7Le niveau de santé de &b%name% &7vient de se &6remplir"
+    en: "&b%name%&7's healt level was set to &6maximum"
 
 expressions:
   console:
