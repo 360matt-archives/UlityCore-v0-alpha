@@ -33,6 +33,7 @@ public class HealCommandExecutor implements CommandExecutor {
     	else {
     		if (args.length != 1) {    			
     			((Player) sender).setFoodLevel(20);
+    			((Player) sender).setHealth(20);
     			sender.sendMessage(Lang.get("heal.HealNotification"));
     		}
     		else {
