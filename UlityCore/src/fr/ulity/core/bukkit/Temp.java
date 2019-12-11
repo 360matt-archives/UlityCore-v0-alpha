@@ -8,19 +8,19 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 @SuppressWarnings("unused")
-public class temp {
+public class Temp {
 	public static YamlConfiguration tempC;
 	
 	
 
 	
 	public static boolean reload() {
-		mainBukkit.plugin.saveDefaultConfig();
+		MainBukkit.plugin.saveDefaultConfig();
 		try {
 			
-			mainBukkit.plugin.reloadConfig();
+			MainBukkit.plugin.reloadConfig();
 			
-			File tempF = new File(mainBukkit.plugin.getDataFolder(), "temp.yml");
+			File tempF = new File(MainBukkit.plugin.getDataFolder(), "temp.yml");
 
 			tempC = YamlConfiguration.loadConfiguration(tempF);
 		    	

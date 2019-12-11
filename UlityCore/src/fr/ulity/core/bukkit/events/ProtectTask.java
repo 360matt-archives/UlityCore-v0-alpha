@@ -11,24 +11,27 @@ import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
-import fr.ulity.core.bukkit.config;
-import fr.ulity.core.bukkit.lang;
-import fr.ulity.core.bukkit.temp;
+import fr.ulity.core.bukkit.Config;
+import fr.ulity.core.bukkit.MainBukkit;
+import fr.ulity.core.bukkit.Lang;
+import fr.ulity.core.bukkit.Temp;
 import net.minecraft.server.v1_14_R1.Explosion;
 
 
-public class protectTask implements Listener{
+public class ProtectTask implements Listener{
+	Config config = new Config();
+	
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e){
         try {
         	Player player = e.getPlayer();
         	
-        	List<?> WorldsProtecteds = config.getList("WorldProtect");
+        	List<?> WorldsProtecteds = MainBukkit.config.getList("WorldProtect");
         	
         	if (WorldsProtecteds.contains(player.getWorld().getName())) {
-        		if (!temp.isSet("player." + player.getName() + ".WorldProtect")) {
+        		if (!Temp.isSet("player." + player.getName() + ".WorldProtect")) {
             		e.setCancelled(true);
-            		player.sendMessage(lang.get("msg.CantEditMap"));
+            		player.sendMessage(Lang.get("msg.CantEditMap"));
             	}
         	}
         	
@@ -44,12 +47,12 @@ public class protectTask implements Listener{
         try {
         	Player player = e.getPlayer();
         	
-        	List<?> WorldsProtecteds = config.getList("WorldProtect");
+        	List<?> WorldsProtecteds = MainBukkit.config.getList("WorldProtect");
         	
         	if (WorldsProtecteds.contains(player.getWorld().getName())) {
-        		if (!temp.isSet("player." + player.getName() + ".WorldProtect")) {
+        		if (!Temp.isSet("player." + player.getName() + ".WorldProtect")) {
             		e.setCancelled(true);
-            		player.sendMessage(lang.get("msg.CantEditMap"));
+            		player.sendMessage(Lang.get("msg.CantEditMap"));
             	}
         	}
 
@@ -63,14 +66,14 @@ public class protectTask implements Listener{
     @EventHandler
     public void onEntityExplose(EntityExplodeEvent e){
         try {
-        	List<?> WorldsProtecteds = config.getList("WorldProtect");
+        	List<?> WorldsProtecteds = MainBukkit.config.getList("WorldProtect");
         	
         	if (WorldsProtecteds.contains(e.getEntity().getWorld().getName())) {
             	if (e.getEntityType() == EntityType.PLAYER) {
             		Player player = (Player) e.getEntity();
-	        		if (!temp.isSet("player." + player.getName() + ".WorldProtect")) {
+	        		if (!Temp.isSet("player." + player.getName() + ".WorldProtect")) {
 	            		e.setCancelled(true);
-	            		player.sendMessage(lang.get("msg.CantEditMap"));
+	            		player.sendMessage(Lang.get("msg.CantEditMap"));
 	            	}
             	}
             	else {
@@ -86,7 +89,7 @@ public class protectTask implements Listener{
     @EventHandler
     public void onBlockExplose(BlockExplodeEvent e){
         try {
-        	List<?> WorldsProtecteds = config.getList("WorldProtect");
+        	List<?> WorldsProtecteds = MainBukkit.config.getList("WorldProtect");
 
         	if (WorldsProtecteds.contains(e.getBlock().getWorld().getName())) 
             	e.setCancelled(true);

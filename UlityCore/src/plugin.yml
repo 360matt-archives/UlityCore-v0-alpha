@@ -2,7 +2,7 @@ author: 360matt, Ulity
 name: UlityCore
 version: 1.0.0
 description: Librairie de fonctions pour les plugins d'Ulity
-main: fr.ulity.core.bukkit.mainBukkit
+main: fr.ulity.core.bukkit.MainBukkit
 
 commands:
   ulitycore:

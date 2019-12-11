@@ -2,7 +2,7 @@ package fr.ulity.core.utils;
 
 import java.security.MessageDigest;
 
-public class sha256 {
+public class Sha256 {
 	static String run(String input) {
 	    try{
 	        MessageDigest digest = MessageDigest.getInstance("SHA-256");

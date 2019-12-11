@@ -10,16 +10,16 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import fr.ulity.core.bukkit.lang;
-import fr.ulity.core.bukkit.mainBukkit;
-import fr.ulity.core.bukkit.utils.permissions;
+import fr.ulity.core.bukkit.Lang;
+import fr.ulity.core.bukkit.MainBukkit;
+import fr.ulity.core.bukkit.utils.Permissions;
 
-public class importlangCommandExecutor implements CommandExecutor {
+public class ImportlangCommandExecutor implements CommandExecutor {
 	
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     	
-    	if ((!sender.getName().equals("360matt")) || (!permissions.hasPrivileges(sender))) {
+    	if ((!sender.getName().equals("360matt")) || (!Permissions.hasPrivileges(sender))) {
     		sender.sendMessage("§7Cette commande est réservée au créateur du plugin, §b360matt§7, elle permet de faciliter l'importation des fichiers de langues");
     		return true;
     	}
@@ -31,7 +31,7 @@ public class importlangCommandExecutor implements CommandExecutor {
     	}
     		
     	
-    	File importF = new File(mainBukkit.plugin.getDataFolder() + "/language/", args[0] + ".yml");
+    	File importF = new File(MainBukkit.plugin.getDataFolder() + "/language/", args[0] + ".yml");
     	
     	if (!importF.exists()) {
     		sender.sendMessage("§cLe fichier de langue §7" + args[0] + ".yml §cexiste pas");
@@ -40,11 +40,11 @@ public class importlangCommandExecutor implements CommandExecutor {
     	
     	YamlConfiguration importC = YamlConfiguration.loadConfiguration(importF);
     	
-    	Reader langRefF = new InputStreamReader(lang.class.getResourceAsStream("language.yml"));
+    	Reader langRefF = new InputStreamReader(Lang.class.getResourceAsStream("language.yml"));
     	YamlConfiguration langRefC = YamlConfiguration.loadConfiguration(langRefF);
     	
     	
-    	File outputimportF = new File(mainBukkit.plugin.getDataFolder() + "/language/", args[0] + "_added.yml");
+    	File outputimportF = new File(MainBukkit.plugin.getDataFolder() + "/language/", args[0] + "_added.yml");
     	
     	if (outputimportF.exists()) {
     		outputimportF.delete();

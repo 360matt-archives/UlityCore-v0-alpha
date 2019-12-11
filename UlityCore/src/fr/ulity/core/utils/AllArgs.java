@@ -1,6 +1,6 @@
 package fr.ulity.core.utils;
 
-public class allArgs {
+public class AllArgs {
 	public static String run (String[] args, Integer count) {
     	String allArgs = "";
 

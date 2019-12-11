@@ -6,8 +6,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import fr.ulity.core.bukkit.lang;
-import fr.ulity.core.bukkit.mainBukkit;
+import fr.ulity.core.bukkit.Lang;
+import fr.ulity.core.bukkit.MainBukkit;
 
 public class FlyCommandExecutor implements CommandExecutor {
     @Override
@@ -25,12 +25,12 @@ public class FlyCommandExecutor implements CommandExecutor {
     		if (args.length == 0) 
     			playerTarget = (Player) sender;
     		else {
-        		if (mainBukkit.server.getPlayer(args[0]) == null) {
-        			sender.sendMessage(lang.get("msg.InvalidPlayer").replaceAll("%name%", args[0]));
+        		if (MainBukkit.server.getPlayer(args[0]) == null) {
+        			sender.sendMessage(Lang.get("msg.InvalidPlayer").replaceAll("%name%", args[0]));
         			return false;
         		}
         			
-    			playerTarget = mainBukkit.plugin.getServer().getPlayer(args[0]);
+    			playerTarget = MainBukkit.plugin.getServer().getPlayer(args[0]);
     			show = true;
     		}
     			
@@ -38,18 +38,18 @@ public class FlyCommandExecutor implements CommandExecutor {
     			playerTarget.setAllowFlight(true);
     			playerTarget.setFlying(true);
     				
-    			playerTarget.sendMessage(lang.get("msg.FlyNotification").replaceAll("%stat%", "§a" + lang.get("enabled")));
+    			playerTarget.sendMessage(Lang.get("msg.FlyNotification").replaceAll("%stat%", "§a" + Lang.get("enabled")));
     			if (show)
-    				sender.sendMessage(lang.get("msg.ChangeFlyOther").replaceAll("%stat%", "§a" + lang.get("enabled")).replaceAll("%name%", playerTarget.getName()));
+    				sender.sendMessage(Lang.get("msg.ChangeFlyOther").replaceAll("%stat%", "§a" + Lang.get("enabled")).replaceAll("%name%", playerTarget.getName()));
     		}
     		else {
     			if (!(playerTarget.getGameMode() == GameMode.CREATIVE))
     				playerTarget.setAllowFlight(false);
     			playerTarget.setFlying(false);
     				
-    			playerTarget.sendMessage(lang.get("msg.FlyNotification").replaceAll("%stat%", "§c" + lang.get("disabled")));
+    			playerTarget.sendMessage(Lang.get("msg.FlyNotification").replaceAll("%stat%", "§c" + Lang.get("disabled")));
     			if (show)
-    				sender.sendMessage(lang.get("msg.ChangeFlyOther").replaceAll("%stat%", "§c" + lang.get("disabled")).replaceAll("%name%", playerTarget.getName()));
+    				sender.sendMessage(Lang.get("msg.ChangeFlyOther").replaceAll("%stat%", "§c" + Lang.get("disabled")).replaceAll("%name%", playerTarget.getName()));
     		}
     		
     	}

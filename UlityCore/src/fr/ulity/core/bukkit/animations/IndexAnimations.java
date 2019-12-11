@@ -1,8 +1,8 @@
 package fr.ulity.core.bukkit.animations;
 
-public class indexAnimations {
+public class IndexAnimations {
 	
-	public static void death (Object args) { death.run(args); }
+	public static void death (Object args) { Death.run(args); }
 
 	
 }

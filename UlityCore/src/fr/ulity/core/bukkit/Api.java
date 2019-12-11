@@ -1,16 +1,16 @@
 package fr.ulity.core.bukkit;
 
-import fr.ulity.core.bukkit.animations.indexAnimations;
-import fr.ulity.core.utils.indexUtils;
-import fr.ulity.core.bukkit.utils.permissions;
+import fr.ulity.core.bukkit.animations.IndexAnimations;
+import fr.ulity.core.utils.IndexUtils;
+import fr.ulity.core.bukkit.utils.Permissions;
 
-public class api {
+public class Api {
 	
-	public static lang lang = new lang();
-	public static indexUtils utils = new indexUtils();
-	public static indexAnimations animations = new indexAnimations();
-	public static permissions permissions = new permissions();
-	public static temp temp = new temp();
+	public static Lang lang = new Lang();
+	public static IndexUtils utils = new IndexUtils();
+	public static IndexAnimations animations = new IndexAnimations();
+	public static Permissions permissions = new Permissions();
+	public static Temp temp = new Temp();
 
 	
 	

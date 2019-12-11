@@ -1,37 +1,37 @@
 package fr.ulity.core.bukkit;
 
 import fr.ulity.core.bukkit.commands.*;
-import fr.ulity.core.bukkit.events.protectTask;
+import fr.ulity.core.bukkit.events.ProtectTask;
 
 import org.bukkit.Server;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
-public class mainBukkit extends JavaPlugin {
-	public static mainBukkit plugin;
+public class MainBukkit extends JavaPlugin {
+	public static MainBukkit plugin ;
+	public static Api api = new Api();
 	public static Server server;
+	public static Config config;
 
-	
-	public static void broadcastMessage (String msg) {
-    	server.broadcastMessage(msg);
-	}
-	
-	
-	
 	
 	
     @Override
     public void onEnable(){
+    	
     	plugin = this;
     	server = this.getServer();
 
+    	ApiClient.initialize(plugin);
+    	
+    	config = new Config();
     	config.reload();
-    	lang.reload();
-    	temp.reload();
     	
-    	getServer().getPluginManager().registerEvents(new protectTask(), this);
+    	Lang.reload();
+    	Temp.reload();
     	
-    	getCommand("ulitycore").setExecutor(new ulityCoreCommandExecutor());
+    	getServer().getPluginManager().registerEvents(new ProtectTask(), this);
+    	
+    	getCommand("ulitycore").setExecutor(new UlityCoreCommandExecutor());
     	getCommand("clc").setExecutor(new ClcCommandExecutor());
     	getCommand("day").setExecutor(new DayCommandExecutor());
     	getCommand("night").setExecutor(new NightCommandExecutor());
@@ -42,11 +42,9 @@ public class mainBukkit extends JavaPlugin {
     	getCommand("gms").setExecutor(new GmsCommandExecutor());
     	getCommand("gmp").setExecutor(new GmpCommandExecutor());
     	getCommand("gma").setExecutor(new GmaCommandExecutor());
-    	getCommand("importlang").setExecutor(new importlangCommandExecutor());
+    	getCommand("importlang").setExecutor(new ImportlangCommandExecutor());
     	getCommand("protect").setExecutor(new ProtectCommandExecutor());
-    	getCommand("heal").setExecutor(new healCommandExecutor());
-    	
-    	
+    	getCommand("heal").setExecutor(new HealCommandExecutor());
     	
 
     	

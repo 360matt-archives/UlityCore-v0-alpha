@@ -14,7 +14,7 @@ import org.bukkit.util.Vector;
 import fr.mrmicky.fastparticle.FastParticle;
 import fr.mrmicky.fastparticle.ParticleType;
 
-public class death {
+public class Death {
 	private static int count = 0;
 	private static Object task;
 	
@@ -48,15 +48,15 @@ public class death {
 		// nombre de loop
 		
 		
-        task = Bukkit.getScheduler().scheduleSyncRepeatingTask(mainBukkit.plugin, new Runnable() {
+        task = Bukkit.getScheduler().scheduleSyncRepeatingTask(MainBukkit.plugin, new Runnable() {
             @Override
             public void run() {
             	if (!player.isOnline()) {
             		Bukkit.getScheduler().cancelTask((int) task);
             	}
             	else if (count == 0) {
-                	if (config.isSet("global.spawn_location")) {
-                		player.teleport((Location) config.get("global.spawn_location"));
+                	if (MainBukkit.config.isSet("global.spawn_location")) {
+                		player.teleport((Location) MainBukkit.config.get("global.spawn_location"));
                 	}
                 	player.setGameMode(oldGameMode);
                 	
