@@ -10,9 +10,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class Config extends Defaultconfig{
-	File configF;
-	FileConfiguration configC;
-	String nameConf = "config";
+	private File configF;
+	private FileConfiguration configC;
+	private String nameConf = "config";
 	
 	public Config (@Nullable String name){
 		if (name != null)
