@@ -18,13 +18,13 @@ public class ApiClient {
 	static fr.ulity.core.bukkit.Config config;
 
 	static {
-		System.out.println("§cLoading API ... / Chargement de l'API");
+		System.out.println("§eLoading API ... / Chargement de l'API");
 	}
 	
 	static void initialize (Plugin _plugin) {
 		if (!_plugin.getServer().getPluginManager().isPluginEnabled("UlityCore")) {
 			_plugin.getPluginLoader().disablePlugin(_plugin);
-			System.out.println("§cUlityCore is missing !!\nUlityCore est absent !!");
+			System.out.println("§c---> UlityCore is missing !!\n§c---> UlityCore est absent !!");
 		}
 		else {
 			plugin = _plugin;
@@ -54,7 +54,7 @@ public class ApiClient {
 		if (plugin != null)
 			return true;
 		else {
-			System.out.println("Oooh, error: API not initialized\nOooh, erreur: l'API n'a pas été initializée");
+			System.out.println("§c---> Oooh, error: API not initialized\n§c---> Oooh, erreur: l'API n'a pas été initializée");
 			return false;
 		}
 	}

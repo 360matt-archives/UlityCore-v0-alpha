@@ -20,8 +20,6 @@ public class MainBukkit extends JavaPlugin {
     	
     	plugin = this;
     	server = this.getServer();
-
-    	ApiClient.initialize(plugin);
     	
     	config = new Config();
     	config.reload();
