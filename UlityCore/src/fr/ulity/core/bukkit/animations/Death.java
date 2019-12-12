@@ -28,12 +28,12 @@ public class Death {
 		
 		GameMode oldGameMode = player.getGameMode();
     	
-		FastParticle.spawnParticle(((Location) victim).getWorld(), ParticleType.REDSTONE, ((Entity) victim).getLocation(), 100, Color.RED);
-		FastParticle.spawnParticle(((Location) victim).getWorld(), ParticleType.REDSTONE, ((Entity) victim).getLocation().add(0, 0.5, 0), 100, Color.RED);
-		FastParticle.spawnParticle(((Location) victim).getWorld(), ParticleType.REDSTONE, ((Entity) victim).getLocation().add(0, 1, 0), 100, Color.RED);
-		FastParticle.spawnParticle(((Location) victim).getWorld(), ParticleType.REDSTONE, ((Entity) victim).getLocation().add(0, 1.5, 0), 100, Color.RED);
-		FastParticle.spawnParticle(((Location) victim).getWorld(), ParticleType.REDSTONE, ((Entity) victim).getLocation().add(0, 2, 0), 100, Color.RED);
-		FastParticle.spawnParticle(((Location) victim).getWorld(), ParticleType.EXPLOSION_LARGE, ((Entity) victim).getLocation().add(0, 1, 0), 100, Color.RED);
+		FastParticle.spawnParticle(player.getWorld(), ParticleType.REDSTONE, player.getLocation(), 100, Color.RED);
+		FastParticle.spawnParticle(player.getWorld(), ParticleType.REDSTONE, player.getLocation().add(0, 0.5, 0), 100, Color.RED);
+		FastParticle.spawnParticle(player.getWorld(), ParticleType.REDSTONE, player.getLocation().add(0, 1, 0), 100, Color.RED);
+		FastParticle.spawnParticle(player.getWorld(), ParticleType.REDSTONE, player.getLocation().add(0, 1.5, 0), 100, Color.RED);
+		FastParticle.spawnParticle(player.getWorld(), ParticleType.REDSTONE, player.getLocation().add(0, 2, 0), 100, Color.RED);
+		FastParticle.spawnParticle(player.getWorld(), ParticleType.EXPLOSION_LARGE, player.getLocation().add(0, 1, 0), 100, Color.RED);
 		
 		player.setGameMode(GameMode.SPECTATOR);
 		player.setHealth(20);

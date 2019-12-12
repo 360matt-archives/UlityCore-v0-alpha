@@ -3,15 +3,17 @@ package fr.ulity.core.bukkit;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class Config extends Defaultconfig{
 	private File configF;
-	private FileConfiguration configC;
+	public FileConfiguration configC;
 	private String nameConf = "config";
 	
 	public Config (@Nullable String name){
@@ -101,7 +103,16 @@ public class Config extends Defaultconfig{
 		return configC.getList(key);
 	}
 	
-	
+	public int getInt(String key) {
+		if (configC == null) 
+			reload();
+		if (configC == null)
+			return 0;
+		if (configC.isSet(key)) 
+			return configC.getInt(key);
+		else
+			return 0;
+	}
 
 	public int getInt(String key, @Nullable int value) {
 		if (configC == null) 
@@ -110,8 +121,27 @@ public class Config extends Defaultconfig{
 			return 0;
 		if (!configC.isSet(key)) 
 			configC.set(key, value);
-		
 		return configC.getInt(key);
+	}
+	
+	public boolean getBoolean(String key) {
+		if (configC == null) 
+			reload();
+		if (configC == null)
+			return false;
+		if (configC.isSet(key)) 
+			return configC.getBoolean(key);
+		return false;
+	}
+
+	public boolean getBoolean(String key, @Nullable int value) {
+		if (configC == null) 
+			reload();
+		if (configC == null)
+			return false;
+		if (!configC.isSet(key)) 
+			configC.set(key, value);
+		return configC.getBoolean(key);
 	}
 	
 	public Object get (String key) {
@@ -138,6 +168,35 @@ public class Config extends Defaultconfig{
 		return configC.get(key);
 	}
 
+	public ConfigurationSection getSection (String key) {
+		if (configC == null) 
+			reload();
+		if (configC == null)
+			return null;
+		if (configC.isSet(key))
+			return configC.getConfigurationSection(key);
+		else
+			return null;
+	}
+
+	public ConfigurationSection getSection(String key, @Nullable Map<?, ?> value) {
+		if (configC == null) 
+			reload();
+		if (configC == null)
+			return null;
+		if (!configC.isSet(key)) 
+			configC.createSection(key, value);
+		
+		try {
+			configC.save(configF);
+		} catch (IOException e) {
+			e.printStackTrace();
+		};
+		
+		return configC.getConfigurationSection(key);
+	}
+
+	
 	public  boolean isSet (String key) {
 		if (configC == null) 
 			reload();
@@ -145,8 +204,7 @@ public class Config extends Defaultconfig{
 			return false;
 		if (configC.isSet(key))
 			return true;
-		else
-			return false;
+		return false;
 	}
 
 	public void set (String key, String value) { 
@@ -161,6 +219,10 @@ public class Config extends Defaultconfig{
 			e.printStackTrace();
 		};
 	}
+
+
+	
+	
 	
 
 }

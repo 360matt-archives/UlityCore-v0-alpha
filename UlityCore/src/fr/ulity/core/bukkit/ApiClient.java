@@ -6,28 +6,31 @@ import javax.annotation.Nullable;
 
 import org.bukkit.plugin.Plugin;
 
-@SuppressWarnings("unused")
+import fr.ulity.core.bukkit.Api;
+
+
 public class ApiClient {
-	static Plugin plugin;
-	static Api apiClass;
-	static fr.ulity.core.bukkit.Lang lang;
-	static fr.ulity.core.utils.IndexUtils utils;
-	static fr.ulity.core.bukkit.animations.IndexAnimations animations;
-	static fr.ulity.core.bukkit.utils.Permissions permissions;
-	static fr.ulity.core.bukkit.Temp temp;
-	static fr.ulity.core.bukkit.Config config;
+	static Plugin _plugin;
+	public static Api apiClass;
+	public static fr.ulity.core.bukkit.Lang lang;
+	public static fr.ulity.core.utils.IndexUtils utils;
+	public static fr.ulity.core.bukkit.animations.IndexAnimations animations;
+	public static fr.ulity.core.bukkit.utils.Permissions permissions;
+	public static fr.ulity.core.bukkit.Temp temp;
+	public static fr.ulity.core.bukkit.Config config;
 
 	static {
-		System.out.println("§eLoading API ... / Chargement de l'API");
+		System.out.println("§eLoading API ... §8(EN) §e/ Chargement de l'API §8(FR)");
 	}
 	
-	static void initialize (Plugin _plugin) {
+	@SuppressWarnings("static-access")
+	static void initialize (Plugin plugin) {
 		if (!_plugin.getServer().getPluginManager().isPluginEnabled("UlityCore")) {
-			_plugin.getPluginLoader().disablePlugin(_plugin);
-			System.out.println("§c---> UlityCore is missing !!\n§c---> UlityCore est absent !!");
+			_plugin.getPluginLoader().disablePlugin(plugin);
+			System.out.println("§c---> UlityCore is missing §8(EN) §c!!\n§c---> UlityCore est absent §8(FR) §e!!");
 		}
 		else {
-			plugin = _plugin;
+			_plugin = plugin;
 			apiClass = fr.ulity.core.bukkit.MainBukkit.api;
 			lang = new fr.ulity.core.bukkit.Lang();
 			utils = new fr.ulity.core.utils.IndexUtils();
@@ -51,10 +54,10 @@ public class ApiClient {
 	}
 	
 	static boolean isInitialized () {
-		if (plugin != null)
+		if (_plugin != null)
 			return true;
 		else {
-			System.out.println("§c---> Oooh, error: API not initialized\n§c---> Oooh, erreur: l'API n'a pas été initializée");
+			System.out.println("§c---> Oooh, error: API not initialized §8(EN) §c!!\n§c---> Oooh, erreur: l'API n'a pas été initializée §8(FR)");
 			return false;
 		}
 	}
