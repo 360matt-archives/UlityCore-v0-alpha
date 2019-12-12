@@ -1,7 +1,6 @@
 package fr.ulity.core.bukkit;
 
 import fr.ulity.core.bukkit.commands.*;
-import fr.ulity.core.bukkit.events.ProtectTask;
 
 import org.bukkit.Server;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,8 +26,6 @@ public class MainBukkit extends JavaPlugin {
     	Lang.reload();
     	Temp.reload();
     	
-    	getServer().getPluginManager().registerEvents(new ProtectTask(), this);
-    	
     	getCommand("ulitycore").setExecutor(new UlityCoreCommandExecutor());
     	getCommand("clc").setExecutor(new ClcCommandExecutor());
     	getCommand("day").setExecutor(new DayCommandExecutor());
@@ -41,7 +38,6 @@ public class MainBukkit extends JavaPlugin {
     	getCommand("gmp").setExecutor(new GmpCommandExecutor());
     	getCommand("gma").setExecutor(new GmaCommandExecutor());
     	getCommand("importlang").setExecutor(new ImportlangCommandExecutor());
-    	getCommand("protect").setExecutor(new ProtectCommandExecutor());
     	getCommand("heal").setExecutor(new HealCommandExecutor());
     	
 

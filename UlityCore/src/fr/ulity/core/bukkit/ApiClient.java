@@ -25,8 +25,8 @@ public class ApiClient {
 	
 	@SuppressWarnings("static-access")
 	static void initialize (Plugin plugin) {
-		if (!_plugin.getServer().getPluginManager().isPluginEnabled("UlityCore")) {
-			_plugin.getPluginLoader().disablePlugin(plugin);
+		if (!plugin.getServer().getPluginManager().isPluginEnabled("UlityCore")) {
+			plugin.getPluginLoader().disablePlugin(plugin);
 			System.out.println("§c---> UlityCore is missing §8(EN) §c!!\n§c---> UlityCore est absent §8(FR) §e!!");
 		}
 		else {

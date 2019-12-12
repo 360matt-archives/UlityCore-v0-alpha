@@ -32,9 +32,6 @@ public class Defaultconfig {
 			*/
 				
 			lang = MainBukkit.config.getString("lang", "fr");
-				
-			String[] exemple = { "world1", "monde2", "mundo3" };
-			WorldProtect = MainBukkit.config.getList("WorldProtect", exemple);
 
 		}
 		catch (Exception e) { }

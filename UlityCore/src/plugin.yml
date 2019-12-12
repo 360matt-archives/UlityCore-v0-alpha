@@ -69,13 +69,6 @@ commands:
     permission:
      - admin
     aliases: []
-  protect:
-    permission:
-     - admin
-     - builder
-     - cmd.protect
-    aliases:
-     - wp
   heal:
     permission:
      - admin
