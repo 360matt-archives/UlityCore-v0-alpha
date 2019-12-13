@@ -105,7 +105,7 @@ public class Lang {
 		
 		for (String x: langToImportC.getKeys(true)) {
 			if (x.contains("." + config.lang))
-				set(x.replaceAll("." + config.lang, ""), langToImportC.getString(x));
+				get(x.replaceAll("." + config.lang, ""), langToImportC.getString(x));
 		}
 		
 	}
