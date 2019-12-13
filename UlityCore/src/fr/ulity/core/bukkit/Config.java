@@ -134,7 +134,7 @@ public class Config extends Defaultconfig{
 		return false;
 	}
 
-	public boolean getBoolean(String key, @Nullable int value) {
+	public boolean getBoolean(String key, @Nullable boolean value) {
 		if (configC == null) 
 			reload();
 		if (configC == null)
@@ -207,7 +207,7 @@ public class Config extends Defaultconfig{
 		return false;
 	}
 
-	public void set (String key, String value) { 
+	public void set (String key, Object value) { 
 		if (configC == null) 
 			reload();
 		if (configC == null)
