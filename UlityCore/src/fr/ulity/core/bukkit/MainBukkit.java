@@ -24,6 +24,8 @@ public class MainBukkit extends JavaPlugin {
     	config.reload();
     	
     	Lang.reload();
+    	
+
     	Temp.reload();
     	
     	getCommand("ulitycore").setExecutor(new UlityCoreCommandExecutor());

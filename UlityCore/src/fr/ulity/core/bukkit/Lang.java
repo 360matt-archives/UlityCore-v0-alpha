@@ -79,6 +79,8 @@ public class Lang {
 			langC = YamlConfiguration.loadConfiguration(langF);
 			System.out.println("§bUlity§7: §eFichier de langue sauvegardé");
 		}
+		
+		new CommandManager();
 						
 		return true;
     }

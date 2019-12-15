@@ -38,15 +38,9 @@ msg:
    TempReloaded:
      fr: "&7Les variables temporaire ont bien étés rechargés"
      en: "&7temporary datas was successfully reloaded"
-   CantEditMap:
-     fr: "&cVous ne pouvez pas éditer les blocs dans ce monde"
-     en: "&cYou cannot edit blocks in this world"
    InGameOnly:
      fr: "&cVous ne pouvez pas executer cette commande depuis la console"
      en: "&cYou can't make this command within console"
-   ProtectCommand:
-     fr: "&7Le mode édition du monde est %stat%"
-     en: "&7The edition mod is %stat%"
 heal:
   HealNotification:
     fr: "&7Votre niveau de santé vient de se &6remplir"

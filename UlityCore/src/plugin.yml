@@ -3,6 +3,7 @@ name: UlityCore
 version: 1.0.0
 description: Librairie de fonctions pour les plugins d'Ulity
 main: fr.ulity.core.bukkit.MainBukkit
+loadbefore: [UlityWorld]
 
 commands:
   ulitycore:
@@ -73,6 +74,5 @@ commands:
     permission:
      - admin
      - cmd.heal
-    aliases:
-     - wp
+    aliases: []
      

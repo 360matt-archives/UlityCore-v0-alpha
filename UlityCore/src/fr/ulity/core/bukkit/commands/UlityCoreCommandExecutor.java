@@ -3,6 +3,7 @@ package fr.ulity.core.bukkit.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.Plugin;
 
 import fr.ulity.core.bukkit.MainBukkit;
 import fr.ulity.core.bukkit.Temp;
@@ -41,6 +42,19 @@ public class UlityCoreCommandExecutor implements CommandExecutor {
 		        			if (args[1].equals("temp") || args[1].equals("tmp")) {
 		                		Temp.reload();
 		                		sender.sendMessage(Lang.get("msg.TempReloaded"));
+		        			}
+		        			else if (args[1].equals("all") || args[1].equals("plugins") || args[1].equals("extentions")) {
+		        				
+		        				
+		        				for (Plugin x: MainBukkit.server.getPluginManager().getPlugins()) {
+		        					if (x.getDescription().getSoftDepend().contains(MainBukkit.plugin.getName())){
+		        						MainBukkit.server.getPluginManager().disablePlugin(x);
+		        						MainBukkit.server.getPluginManager().enablePlugin(x);
+		        					}
+		        				}
+		        				
+		        				
+
 		        			}
 		        		}
     				}
