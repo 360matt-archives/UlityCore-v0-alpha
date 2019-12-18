@@ -74,6 +74,12 @@ expressions:
   disabled:
     fr: "désactivé"
     en: "disabled"
+  syntax:
+    fr: "syntaxe"
+    en: "syntax"
+  description:
+    fr: "description"
+    en: "description"
 gamemode:
   GamemodeNotification:
     fr: "&7Votre mode de jeu a été changé en &6%mod%"
