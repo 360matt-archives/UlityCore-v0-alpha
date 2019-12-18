@@ -7,6 +7,7 @@ import org.bukkit.material.MaterialData;
 /**
  * @author MrMicky
  */
+@SuppressWarnings("deprecation")
 public enum ParticleType {
 
     // 1.7+
