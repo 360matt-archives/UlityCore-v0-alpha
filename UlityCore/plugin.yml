@@ -1,0 +1,63 @@
+name: UlityCore
+version: 1.0.0
+author: [360matt, Ulity]
+main: fr.ulity.core.bukkit.MainBukkit
+loadbefore: [UlityWorld]
+
+commands:
+  ulitycore:
+    aliases:
+     - uc
+  clc:
+    permissions:
+     - mod
+     - ulity.clcs
+  day:
+    permissions:
+     - admin
+     - ulity.day
+  night:
+    permissions:
+     - admin
+     - ulity.night
+  broadcast:
+    permissions:
+     - mod
+     - ulity.broadcast
+     - ulity.bc
+    aliases:
+     - bc
+  fly:
+    permissions:
+     - admin
+     - ulity.fly
+  gamemode:
+    permissions:
+     - admin
+     - ulity.gamemode
+  gmc:
+    permissions:
+     - admin
+     - ulity.gmc
+  gms:
+    permissions:
+     - admin
+     - ulity.gms
+  gma:
+    permissions:
+     - admin
+     - ulity.gma
+  gmp:
+    permissions:
+     - admin
+     - ulity.gmp
+  importlang:
+    permissions:
+     - admin
+  heal:
+    permissions:
+     - admin
+     - ulity.heal
+
+
+     
