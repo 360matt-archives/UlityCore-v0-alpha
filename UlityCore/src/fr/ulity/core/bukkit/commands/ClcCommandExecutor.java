@@ -14,7 +14,7 @@ import fr.ulity.core.utils.AllArgs;
 public class ClcCommandExecutor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    	
+
     	for(int i = 0; i < 100; i++)
     		MainBukkit.plugin.getServer().broadcastMessage("");
     	

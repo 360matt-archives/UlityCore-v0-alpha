@@ -58,6 +58,16 @@ commands:
     permissions:
      - admin
      - ulity.heal
+  ban:
+    permissions:
+     - mod
+     - ulity.ban
+  unban:
+    aliases:
+     - pardon
+    permissions:
+     - mod
+     - ulity.unban
 
 
      

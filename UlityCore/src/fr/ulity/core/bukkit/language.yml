@@ -1,6 +1,10 @@
 lang:
   fr: "French"
   en: "British"
+global:
+  server-prefix:
+    fr: "&7[&cJolie serveur&7] "
+    en: "&7[&cBeatiful server&7] "
 msg:
    not_opped:
      fr: "&cVous n'avez pas les privilèges néccessaires"
@@ -41,6 +45,9 @@ msg:
    InGameOnly:
      fr: "&cVous ne pouvez pas executer cette commande depuis la console"
      en: "&cYou can't make this command within console"
+   ArgsList:
+     fr: "Liste des arguments"
+     en: "Arguments list"
 heal:
   HealNotification:
     fr: "&7Votre niveau de santé vient de se &6remplir"
@@ -48,7 +55,6 @@ heal:
   HealNotificationOther:
     fr: "&7Le niveau de santé de &b%name% &7vient de se &6remplir"
     en: "&b%name%&7's healt level was set to &6maximum"
-
 expressions:
   console:
     fr: "la console"
@@ -56,6 +62,9 @@ expressions:
   unknown_reason:
     fr: "raison inconnue"
     en: "unknown reason"
+  undefined:
+    fr: "indéfini"
+    en: "undefined"
   day:
     fr: "jour"
     en: "day"
@@ -80,6 +89,30 @@ expressions:
   description:
     fr: "description"
     en: "description"
+  world:
+    fr: "monde"
+    en: "world"
+  yes0:
+    fr: "oui"
+    en: "yes"
+  no0:
+    fr: "non"
+    en: "no"
+  permanent:
+    fr: "permanent"
+    en: "permanenent"
+  unknown:
+    fr: "inconnue"
+    en: "unknown"
+ban:
+  no_arg:
+    fr: "&cBannir un joueur casse-pied: &e/ban <joueur> &8[raison]"
+  ban_notification:
+    fr: "&7Vous avez été banni du serveur\n\n&eAuteur: &b%staff%\n&eDurée: &c%time%\n\n&eRaison: &c%reason%"
+  ban_broadcast:
+    fr: "&c%player% &7a été banni par &b%staff%"
+  unban_result:
+    fr: "&c%player% &7bien a été débanni"
 gamemode:
   GamemodeNotification:
     fr: "&7Votre mode de jeu a été changé en &6%mod%"

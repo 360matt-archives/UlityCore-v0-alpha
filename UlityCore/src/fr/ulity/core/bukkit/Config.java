@@ -20,6 +20,7 @@ public class Config extends Defaultconfig{
 		if (name != null)
 			nameConf = name;
 	}
+	
 	public Config (){ }
 	
 	public boolean reload() {
@@ -30,7 +31,16 @@ public class Config extends Defaultconfig{
 			if (!configF.exists())
 				configF.createNewFile();
 			
-			configC = YamlConfiguration.loadConfiguration(configF);
+			
+			try {
+				configC = YamlConfiguration.loadConfiguration(configF);
+			}
+			catch(Exception err) {
+				configF.delete();
+				reload();
+				return false;
+			}
+			
 			
 			if (nameConf.equals("config"))
 				Config.isAConfig();
@@ -45,12 +55,18 @@ public class Config extends Defaultconfig{
 			return false;
 		}
     }
-
 	
-	public String getString (String key) {
+	private boolean init () {
 		if (configC == null)
 			reload();
 		if (configC == null)
+			return false;
+		return true;
+	}
+
+	
+	public String getString (String key) {
+		if (!init())
 			return "";
 		if (configC.isSet(key))
 			return configC.getString(key);
@@ -59,9 +75,7 @@ public class Config extends Defaultconfig{
 	}
 
 	public String getString(String key, @Nullable String value) {
-		if (configC == null)
-			reload();
-		if (configC == null)
+		if (!init())
 			return "";
 		if (!configC.isSet(key)) 
 			configC.set(key, value);
@@ -76,9 +90,7 @@ public class Config extends Defaultconfig{
 	}
 	
 	public List<?> getList (String key) {
-		if (configC == null)
-			reload();
-		if (configC == null)
+		if (!init())
 			return null;
 		if (configC.isSet(key))
 			return configC.getList(key);
@@ -87,9 +99,7 @@ public class Config extends Defaultconfig{
 	}
 
 	public List<?> getList(String key, @Nullable Object[] exemple) {
-		if (configC == null)
-			reload();
-		if (configC == null)
+		if (!init())
 			return null;
 		if (!configC.isSet(key)) 
 			configC.set(key, exemple);
@@ -104,9 +114,7 @@ public class Config extends Defaultconfig{
 	}
 	
 	public int getInt(String key) {
-		if (configC == null) 
-			reload();
-		if (configC == null)
+		if (!init())
 			return 0;
 		if (configC.isSet(key)) 
 			return configC.getInt(key);
@@ -115,9 +123,7 @@ public class Config extends Defaultconfig{
 	}
 
 	public int getInt(String key, @Nullable int value) {
-		if (configC == null) 
-			reload();
-		if (configC == null)
+		if (!init())
 			return 0;
 		if (!configC.isSet(key)) 
 			configC.set(key, value);
@@ -125,9 +131,7 @@ public class Config extends Defaultconfig{
 	}
 	
 	public boolean getBoolean(String key) {
-		if (configC == null) 
-			reload();
-		if (configC == null)
+		if (!init())
 			return false;
 		if (configC.isSet(key)) 
 			return configC.getBoolean(key);
@@ -135,9 +139,7 @@ public class Config extends Defaultconfig{
 	}
 
 	public boolean getBoolean(String key, @Nullable boolean value) {
-		if (configC == null) 
-			reload();
-		if (configC == null)
+		if (!init())
 			return false;
 		if (!configC.isSet(key)) 
 			configC.set(key, value);
@@ -145,6 +147,8 @@ public class Config extends Defaultconfig{
 	}
 	
 	public Object get (String key) {
+		if (!init())
+			return "";
 		if (configC.isSet(key))
 			return configC.get(key);
 		else
@@ -152,9 +156,7 @@ public class Config extends Defaultconfig{
 	}
 
 	public  Object get(String key, Object value) {
-		if (configC == null) 
-			reload();
-		if (configC == null)
+		if (!init())
 			return "";
 		if (!configC.isSet(key)) 
 			configC.set(key, value);
@@ -169,9 +171,7 @@ public class Config extends Defaultconfig{
 	}
 
 	public ConfigurationSection getSection (String key) {
-		if (configC == null) 
-			reload();
-		if (configC == null)
+		if (!init())
 			return null;
 		if (configC.isSet(key))
 			return configC.getConfigurationSection(key);
@@ -180,9 +180,7 @@ public class Config extends Defaultconfig{
 	}
 
 	public ConfigurationSection getSection(String key, @Nullable Map<?, ?> value) {
-		if (configC == null) 
-			reload();
-		if (configC == null)
+		if (!init())
 			return null;
 		if (!configC.isSet(key)) 
 			configC.createSection(key, value);
@@ -197,10 +195,8 @@ public class Config extends Defaultconfig{
 	}
 
 	
-	public  boolean isSet (String key) {
-		if (configC == null) 
-			reload();
-		if (configC == null)
+	public boolean isSet (String key) {
+		if (!init())
 			return false;
 		if (configC.isSet(key))
 			return true;
@@ -208,9 +204,7 @@ public class Config extends Defaultconfig{
 	}
 
 	public void set (String key, Object value) { 
-		if (configC == null) 
-			reload();
-		if (configC == null)
+		if (!init())
 			return;
 		configC.set(key, value); 
 		try {
@@ -221,7 +215,35 @@ public class Config extends Defaultconfig{
 	}
 
 
-	
+	public void delete (String key) { 
+		if (!init())
+			return;
+		configC.set(key, null);
+		try {
+			configC.save(configF);
+		} catch (IOException e) {
+			e.printStackTrace();
+		};
+	}
+
+
+	public void deleteAll (String key) { 
+		if (!init())
+			return;
+		
+		for (String i : configC.getKeys(true)) {
+			if (i.contains(key))
+				configC.set(key, null);
+		}
+		
+		try {
+			configC.save(configF);
+		} catch (IOException e) {
+			e.printStackTrace();
+		};
+	}
+
+
 	
 	
 

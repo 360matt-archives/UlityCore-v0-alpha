@@ -1,8 +1,12 @@
 package fr.ulity.core.bukkit;
 
 import fr.ulity.core.bukkit.commands.*;
+import fr.ulity.core.bukkit.events.Banned;
+import fr.ulity.core.bukkit.events.ClearTemp;
 
 import org.bukkit.Server;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -11,6 +15,7 @@ public class MainBukkit extends JavaPlugin {
 	public static Api api = new Api();
 	public static Server server;
 	public static Config config;
+	public static PluginManager pMan;
 
 	
 	
@@ -28,6 +33,19 @@ public class MainBukkit extends JavaPlugin {
 
     	Temp.reload();
     	
+    	pMan = server.getPluginManager();
+    	
+    	for (Plugin x: pMan.getPlugins()) {
+    		if (x.getDescription().getDepend().contains(plugin.getName())) {
+    			if (x.isEnabled())
+    				pMan.disablePlugin(x);
+    			pMan.enablePlugin(x);
+    		}
+    	}
+    	
+    	pMan.registerEvents(new Banned(), this);
+    	pMan.registerEvents(new ClearTemp(), this);
+    	
     	getCommand("ulitycore").setExecutor(new UlityCoreCommandExecutor());
     	getCommand("clc").setExecutor(new ClcCommandExecutor());
     	getCommand("day").setExecutor(new DayCommandExecutor());
@@ -41,6 +59,8 @@ public class MainBukkit extends JavaPlugin {
     	getCommand("gma").setExecutor(new GmaCommandExecutor());
     	getCommand("importlang").setExecutor(new ImportlangCommandExecutor());
     	getCommand("heal").setExecutor(new HealCommandExecutor());
+    	getCommand("ban").setExecutor(new BanCommandExecutor());
+    	getCommand("unban").setExecutor(new UnbanCommandExecutor());
     	
 
     	
@@ -49,6 +69,12 @@ public class MainBukkit extends JavaPlugin {
     
     @Override
     public void onDisable(){
+    	
+    	for (Plugin x: pMan.getPlugins()) {
+    		if (x.getDescription().getDepend().contains(plugin.getName())) {
+    			pMan.disablePlugin(x);
+    		}
+    	}
     	
     }
 

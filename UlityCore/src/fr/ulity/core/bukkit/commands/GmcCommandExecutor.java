@@ -23,16 +23,14 @@ public class GmcCommandExecutor implements CommandExecutor {
     		Player playerTarget = null;
     		
     		if (args.length != 0) {
-    			if (Permissions.hasPrivileges_ShowError(sender)) {
+    			if (Permissions.hasPrivileges_ShowError(sender))
     				return true;
-    			}
             	if (MainBukkit.server.getPlayer(args[0]) == null) {
             		sender.sendMessage(Lang.get("InvalidPlayer").replaceAll("%name%", args[0]));
             		return true;
             	}
-            	else {
+            	else
             		playerTarget = MainBukkit.server.getPlayer(args[0]);
-            	}
     		}
     		else 
     			playerTarget = (Player) sender;

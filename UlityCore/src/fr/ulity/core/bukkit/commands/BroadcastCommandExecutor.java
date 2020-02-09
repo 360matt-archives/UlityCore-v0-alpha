@@ -15,7 +15,7 @@ public class BroadcastCommandExecutor implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     	
     	if (args.length != 0) 
-    		Bukkit.broadcastMessage("§7" + AllArgs.run(args).replaceAll("&", "§"));
+    		Bukkit.broadcastMessage(Lang.get("global.server-prefix") + "§7" + AllArgs.run(args).replaceAll("&", "§"));
     	else 
     		sender.sendMessage(Lang.get("msg.empty_arg"));
 

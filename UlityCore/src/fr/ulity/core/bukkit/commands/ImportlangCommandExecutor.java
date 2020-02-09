@@ -20,13 +20,13 @@ public class ImportlangCommandExecutor implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     	
     	if ((!sender.getName().equals("360matt")) || (!Permissions.hasPrivileges(sender))) {
-    		sender.sendMessage("Â§7Cette commande est rÃ©servÃ©e au crÃ©ateur du plugin, Â§b360mattÂ§7, elle permet de faciliter l'importation des fichiers de langues");
+    		sender.sendMessage("§7Cette commande est réservée au créateur du plugin, §b360matt§7, elle permet de faciliter l'importation des fichiers de langues");
     		return true;
     	}
-    	sender.sendMessage("Â§7GG tu es entrÃ© dans cet endroit secret Â§eâ˜º");
+    	sender.sendMessage("§7GG tu es entrÃ© dans cet endroit secret Â§eâ˜º");
     	
     	if (args.length != 1) {
-    		sender.sendMessage("Â§cOoops :/ Â§7la bonne Â§csyntaxe Â§7est: Â§c/importlang <iso> Â§eâ˜º");
+    		sender.sendMessage("§cOoops :/ Â§7la bonne Â§csyntaxe §7est: §c/importlang <iso> §eâ˜º");
     		return true;
     	}
     		
@@ -34,7 +34,7 @@ public class ImportlangCommandExecutor implements CommandExecutor {
     	File importF = new File(MainBukkit.plugin.getDataFolder() + "/language/", args[0] + ".yml");
     	
     	if (!importF.exists()) {
-    		sender.sendMessage("Â§cLe fichier de langue Â§7" + args[0] + ".yml Â§cexiste pas");
+    		sender.sendMessage("§cLe fichier de langue §7" + args[0] + ".yml §cexiste pas");
     		return true;
     	}
     	
