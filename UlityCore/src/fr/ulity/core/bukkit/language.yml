@@ -107,12 +107,26 @@ expressions:
 ban:
   no_arg:
     fr: "&cBannir un joueur casse-pied: &e/ban <joueur> &8[raison]"
+    en: "&cBan a player: &e/ban <player> &8[reason]"
+  unban_no_arg:
+    fr: "&cDébannir un joueur: &e/unban <joueur>"
+    en: "&cUnban a player: &c/unban <player>"
   ban_notification:
     fr: "&7Vous avez été banni du serveur\n\n&eAuteur: &b%staff%\n&eDurée: &c%time%\n\n&eRaison: &c%reason%"
+    en: "&7Vous have been banned from this server\n\n&eAuthor: &b%staf%\n&eDuration: &c%time%\n\n&eReason: &c%reason%"
   ban_broadcast:
     fr: "&c%player% &7a été banni par &b%staff%"
+    en: "&c%player% &7was banned by &b%staff"
   unban_result:
     fr: "&c%player% &7bien a été débanni"
+    en: "&c%player% &7was successfully unbaned"
+tempban:
+  no_arg:
+    fr: "&cBannir un joueur casse-pied: &e/tempban <joueur> <durée> &8[raison]"
+    en: "&cBan a player: &e/tempban <player> <duration> &8[reason]"
+  no_arg_time:
+    fr: "&cVous devez préciser une durée (&710m, 2h30m, 7d, 2w&c)"
+    en: "&cYou must precise duration (&710m, 2h30m, 7d, 2w&c)"
 gamemode:
   GamemodeNotification:
     fr: "&7Votre mode de jeu a été changé en &6%mod%"
@@ -135,6 +149,13 @@ gamemode:
   spectator:
     fr: "spéctateur"
     en: "spectator"
+kick:
+  no_arg:
+    fr: "&cKick un joueur casse-pied: &e/kick <joueur> &8[raison]"
+    en: "&cKick a player: &e/kick <player> &8[reason]"
+  default_msg:
+    fr: "&cKick du serveur"
+    en: "&cKicked of server"
 type:
   player:
     fr: "joueur"

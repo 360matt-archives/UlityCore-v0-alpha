@@ -20,17 +20,7 @@ public class Defaultconfig {
 	public static void isAConfig() {
 		try {
 			Config Dconfig = new Config();
-		    	
-		    // config par défaut:
-			
-			/*
-			dbHost = MainBukkit.config.getString("db.host", "127.0.0.1");
-			dbName = MainBukkit.config.getString("db.name", "test");
-			dbUser = MainBukkit.config.getString("db.user", "root");
-			dbPassword = MainBukkit.config.getString("db.password", "secret");
-			dbSSL = (boolean) MainBukkit.config.get("db.ssl", true);
-			*/
-				
+
 			lang = MainBukkit.config.getString("lang", "fr");
 
 		}

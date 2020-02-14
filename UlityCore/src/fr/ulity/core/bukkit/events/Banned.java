@@ -29,7 +29,7 @@ public class Banned implements Listener {
 			if (expire == null)
 				cooldown = Lang.get("expressions.permanent");
 			else
-				cooldown = Time.toLetters(expire.getTime() - new Date().getTime());
+				cooldown = Time.toLetters((expire.getTime() - new Date().getTime())/1000);
 			
 			
 			e.disallow(PlayerLoginEvent.Result.KICK_BANNED, Lang.get("ban.ban_notification")

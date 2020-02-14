@@ -61,6 +61,8 @@ public class MainBukkit extends JavaPlugin {
     	getCommand("heal").setExecutor(new HealCommandExecutor());
     	getCommand("ban").setExecutor(new BanCommandExecutor());
     	getCommand("unban").setExecutor(new UnbanCommandExecutor());
+    	getCommand("tempban").setExecutor(new TempbanCommandExecutor());
+    	getCommand("kick").setExecutor(new KickCommandExecutor());
     	
 
     	

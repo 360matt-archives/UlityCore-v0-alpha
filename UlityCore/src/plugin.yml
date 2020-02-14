@@ -68,6 +68,13 @@ commands:
     permissions:
      - mod
      - ulity.unban
-
-
-     
+  tempban:
+    aliases:
+     - tban
+    permissions:
+     - mod
+     - ulity.tempban
+  kick:
+    permissions:
+     - mod
+     - ulity.kick
