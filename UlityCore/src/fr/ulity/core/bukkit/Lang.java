@@ -48,10 +48,24 @@ public class Lang {
 	    for(String key : langRefC.getKeys(true)){
 	        if (key.contains("." + Config.lang)) {
 	        	if (!key.equals("lang." + Config.lang))
-	        		get(key.replaceAll("." + Config.lang, ""), langRefC.getString(key));
+	        		langC.set(key.replaceAll("." + Config.lang, ""), langRefC.getString(key));
 	        }
 	    }
 	    
+		save();
+		
+	}
+	
+	
+	public static boolean isInitialized () {
+		if (langC == null)
+			reload();
+		if (langC == null) // again
+			return false;
+		return true;
+	}
+	
+	public static void save () {
 		try {
 			langC.save(langF);
 			System.out.println("§bUlity§7: §eFichier de langue sauvegardé");
@@ -61,18 +75,7 @@ public class Lang {
 			System.out.println("§bUlity§c: error: unable to save the language file ! §8(EN)");
 			System.out.println("§bUlity§c: erreur: impossible de sauvegarder le fichier de langue ! §8(FR)");
 		}
-		
 	}
-	
-	
-	public static boolean isInitialized () {
-		if (langC == null)
-			reload();
-		if (langC == null)
-			return false;
-		return true;
-	}
-	
 
 	@SuppressWarnings("static-access")
 	public static void importFromFile (InputStream langToImport) {
@@ -92,8 +95,10 @@ public class Lang {
 		
 		for (String x: langToImportC.getKeys(true)) {
 			if (x.contains("." + config.lang))
-				get(x.replaceAll("." + config.lang, ""), langToImportC.getString(x));
+				langC.set(x.replaceAll("." + config.lang, ""), langToImportC.getString(x));
 		}
+		
+		save();
 		
 	}
 

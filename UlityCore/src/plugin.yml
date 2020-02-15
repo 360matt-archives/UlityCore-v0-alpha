@@ -35,6 +35,7 @@ commands:
     permissions:
      - admin
      - ulity.gamemode
+     - ulity.gm
   gmc:
     permissions:
      - admin

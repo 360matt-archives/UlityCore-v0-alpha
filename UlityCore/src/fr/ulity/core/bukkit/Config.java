@@ -24,36 +24,27 @@ public class Config extends Defaultconfig{
 	public Config (){ }
 	
 	public boolean reload() {
-		try {
+		configF = new File(MainBukkit.plugin.getDataFolder(), nameConf + ".yml");
 			
-			configF = new File(MainBukkit.plugin.getDataFolder(), nameConf + ".yml");
-			
-			if (!configF.exists())
-				configF.createNewFile();
-			
-			
+		if (!configF.exists()) {
 			try {
-				configC = YamlConfiguration.loadConfiguration(configF);
+				configF.createNewFile();
 			}
-			catch(Exception err) {
-				configF.delete();
-				reload();
+			catch(Exception e) {
+				System.out.println("§bUlity§c: ERREUR: impossible de créer le fichier de configuration §7" + nameConf);
 				return false;
 			}
-			
-			
-			if (nameConf.equals("config"))
-				Config.isAConfig();
-
-			System.out.println("§bUlity§7: §eFichier de configuration §7" + nameConf + " §erechargé");
 				
-			return true;
 		}
-		catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("§bUlity§c: ERREUR: impossible de charger le fichier de configuration §7" + nameConf);
-			return false;
-		}
+		
+		configC = YamlConfiguration.loadConfiguration(configF);
+
+		
+	if (nameConf.equals("config"))
+		Config.isAConfig();
+		System.out.println("§bUlity§7: §eFichier de configuration §7" + nameConf + " §erechargé");
+				
+		return true;
     }
 	
 	private boolean init () {
