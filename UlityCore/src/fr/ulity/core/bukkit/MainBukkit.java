@@ -14,7 +14,7 @@ public class MainBukkit extends JavaPlugin {
 	public static MainBukkit plugin ;
 	public static Api api = new Api();
 	public static Server server;
-	public static Config config;
+	public static Config config = new Config();
 	public static PluginManager pMan;
 
 	
@@ -24,8 +24,7 @@ public class MainBukkit extends JavaPlugin {
     	
     	plugin = this;
     	server = this.getServer();
-    	
-    	config = new Config();
+
     	config.reload();
     	
     	Lang.reload();
@@ -71,6 +70,9 @@ public class MainBukkit extends JavaPlugin {
     
     @Override
     public void onDisable(){
+    	
+    	Lang.reload();
+    	config.reload();
     	
     	for (Plugin x: pMan.getPlugins()) {
     		if (x.getDescription().getDepend().contains(plugin.getName())) {

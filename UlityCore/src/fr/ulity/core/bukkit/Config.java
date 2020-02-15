@@ -24,6 +24,14 @@ public class Config extends Defaultconfig{
 	public Config (){ }
 	
 	public boolean reload() {
+		if (configC != null) {
+			try {
+				configC.save(configF);
+			} catch (IOException e) {
+				e.printStackTrace();
+			};
+		}
+		
 		configF = new File(MainBukkit.plugin.getDataFolder(), nameConf + ".yml");
 			
 		if (!configF.exists()) {
@@ -70,13 +78,7 @@ public class Config extends Defaultconfig{
 			return "";
 		if (!configC.isSet(key)) 
 			configC.set(key, value);
-		
-		try {
-			configC.save(configF);
-		} catch (IOException e) {
-			e.printStackTrace();
-		};
-		
+
 		return configC.getString(key).replaceAll("&", "§");
 	}
 	
@@ -94,13 +96,7 @@ public class Config extends Defaultconfig{
 			return null;
 		if (!configC.isSet(key)) 
 			configC.set(key, exemple);
-		
-		try {
-			configC.save(configF);
-		} catch (IOException e) {
-			e.printStackTrace();
-		};
-		
+
 		return configC.getList(key);
 	}
 	
@@ -151,13 +147,7 @@ public class Config extends Defaultconfig{
 			return "";
 		if (!configC.isSet(key)) 
 			configC.set(key, value);
-		
-		try {
-			configC.save(configF);
-		} catch (IOException e) {
-			e.printStackTrace();
-		};
-		
+
 		return configC.get(key);
 	}
 
@@ -175,13 +165,7 @@ public class Config extends Defaultconfig{
 			return null;
 		if (!configC.isSet(key)) 
 			configC.createSection(key, value);
-		
-		try {
-			configC.save(configF);
-		} catch (IOException e) {
-			e.printStackTrace();
-		};
-		
+	
 		return configC.getConfigurationSection(key);
 	}
 
@@ -198,11 +182,7 @@ public class Config extends Defaultconfig{
 		if (!init())
 			return;
 		configC.set(key, value); 
-		try {
-			configC.save(configF);
-		} catch (IOException e) {
-			e.printStackTrace();
-		};
+
 	}
 
 
@@ -210,11 +190,7 @@ public class Config extends Defaultconfig{
 		if (!init())
 			return;
 		configC.set(key, null);
-		try {
-			configC.save(configF);
-		} catch (IOException e) {
-			e.printStackTrace();
-		};
+
 	}
 
 
@@ -226,12 +202,7 @@ public class Config extends Defaultconfig{
 			if (i.contains(key))
 				configC.set(key, null);
 		}
-		
-		try {
-			configC.save(configF);
-		} catch (IOException e) {
-			e.printStackTrace();
-		};
+
 	}
 
 
