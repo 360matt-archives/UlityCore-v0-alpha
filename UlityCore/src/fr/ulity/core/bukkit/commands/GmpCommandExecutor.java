@@ -25,7 +25,8 @@ public class GmpCommandExecutor implements CommandExecutor {
     		if (args.length != 0) {
     			if (!Permissions.hasPrivileges(sender) 
     			&& !sender.hasPermission("ulity.gamemode.other") 
-    			&& !sender.hasPermission("ulity.gm.other")) {
+    			&& !sender.hasPermission("ulity.gm.other")
+    			&& !sender.hasPermission("ulity.gmp.other")) {
     				sender.sendMessage(Lang.get("gamemode.no_perm_other"));
     				return true;
     			}
