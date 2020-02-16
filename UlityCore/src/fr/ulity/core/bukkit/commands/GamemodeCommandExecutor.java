@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import fr.ulity.core.bukkit.Lang;
 import fr.ulity.core.bukkit.MainBukkit;
+import fr.ulity.core.bukkit.utils.Permissions;
 import fr.ulity.core.utils.Syntax;
 
 public class GamemodeCommandExecutor implements CommandExecutor {
@@ -22,18 +23,25 @@ public class GamemodeCommandExecutor implements CommandExecutor {
     		return true;
     	}
     	else {
-    		if (args.length == 2) {  			
-    			if ((MainBukkit.server.getPlayer(args[0]) == null) && (MainBukkit.server.getPlayer(args[1]) == null)) {
-    				sender.sendMessage(Lang.get("msg.InvalidPlayer").replaceAll("%name%", args[0]));
+    		if (args.length == 2) {
+    			if (!Permissions.hasPrivileges(sender) 
+    			&& !sender.hasPermission("ulity.gamemode.other") 
+    			&& !sender.hasPermission("ulity.gm.other")) {
+    				sender.sendMessage(Lang.get("gamemode.no_perm_other"));
     				return true;
     			}
     			if (MainBukkit.server.getPlayer(args[0]) != null) {
         			playerTarget = MainBukkit.server.getPlayer(args[0]);
         			mod = args[1];
     			}
-    			else {
+    			else if (MainBukkit.server.getPlayer(args[1]) != null){
         			playerTarget = MainBukkit.server.getPlayer(args[1]);
         			mod = args[0];
+    			}
+    			else {
+    				sender.sendMessage(Lang.get("msg.InvalidPlayer")
+    									.replaceAll("%name%", args[0]));
+    				return true;
     			}
     		}
     		else {
@@ -49,27 +57,36 @@ public class GamemodeCommandExecutor implements CommandExecutor {
 			case "1":
 			case "crea":
 				playerTarget.setGameMode(GameMode.CREATIVE);
-				playerTarget.sendMessage(Lang.get("gamemode.GamemodeNotification").replaceAll("%mod%", Lang.get("gamemode.creative")));
+				playerTarget.sendMessage(Lang.get("gamemode.GamemodeNotification")
+										.replaceAll("%mod%", Lang.get("gamemode.creative")));
 				if (sender.getName() != playerTarget.getName())
-					sender.sendMessage(Lang.get("gamemode.ChangeGamemodeOther").replaceAll("%mod%", Lang.get("gamemode.creative")).replaceAll("%name%", playerTarget.getName()));
+					sender.sendMessage(Lang.get("gamemode.ChangeGamemodeOther")
+										.replaceAll("%mod%", Lang.get("gamemode.creative"))
+										.replaceAll("%name%", playerTarget.getName()));
 				break;
 			case "survival":
 			case "survie":
 			case "0":
 			case "surv":
 				playerTarget.setGameMode(GameMode.SURVIVAL);
-				playerTarget.sendMessage(Lang.get("gamemode.GamemodeNotification").replaceAll("%mod%", Lang.get("gamemode.survival")));
+				playerTarget.sendMessage(Lang.get("gamemode.GamemodeNotification")
+				.replaceAll("%mod%", Lang.get("gamemode.survival")));
 				if (sender.getName() != playerTarget.getName())
-					sender.sendMessage(Lang.get("gamemode.ChangeGamemodeOther").replaceAll("%mod%", Lang.get("gamemode.survival")).replaceAll("%name%", playerTarget.getName()));
+					sender.sendMessage(Lang.get("gamemode.ChangeGamemodeOther")
+										.replaceAll("%mod%", Lang.get("gamemode.survival"))
+										.replaceAll("%name%", playerTarget.getName()));
 				break;
 			case "adventure":
 			case "aventure":
 			case "2":
 			case "av":
 				playerTarget.setGameMode(GameMode.ADVENTURE);
-				playerTarget.sendMessage(Lang.get("gamemode.GamemodeNotification").replaceAll("%mod%", Lang.get("gamemode.adventure")));
+				playerTarget.sendMessage(Lang.get("gamemode.GamemodeNotification")
+				.replaceAll("%mod%", Lang.get("gamemode.adventure")));
 				if (sender.getName() != playerTarget.getName())
-					sender.sendMessage(Lang.get("gamemode.ChangeGamemodeOther").replaceAll("%mod%", Lang.get("gamemode.adventure")).replaceAll("%name%", playerTarget.getName()));
+					sender.sendMessage(Lang.get("gamemode.ChangeGamemodeOther")
+										.replaceAll("%mod%", Lang.get("gamemode.adventure"))
+										.replaceAll("%name%", playerTarget.getName()));
     			break;
 			case "spectator":
 			case "spectateur":
@@ -78,12 +95,16 @@ public class GamemodeCommandExecutor implements CommandExecutor {
 			case "spec":
 			case "spe":
 				playerTarget.setGameMode(GameMode.SPECTATOR);
-				playerTarget.sendMessage(Lang.get("GamemodeNotification").replaceAll("%mod%", Lang.get("gamemode.spectator")));
+				playerTarget.sendMessage(Lang.get("GamemodeNotification")
+										.replaceAll("%mod%", Lang.get("gamemode.spectator")));
 				if (sender.getName() != playerTarget.getName())
-					sender.sendMessage(Lang.get("ChangeGamemodeOther").replaceAll("%mod%", Lang.get("gamemode.spectator")).replaceAll("%name%", playerTarget.getName()));
+					sender.sendMessage(Lang.get("ChangeGamemodeOther")
+										.replaceAll("%mod%", Lang.get("gamemode.spectator"))
+										.replaceAll("%name%", playerTarget.getName()));
     			break;
     		default:
-    			sender.sendMessage(Lang.get("gamemode.InvalidGamemode").replaceAll("%mod%", mod));
+    			sender.sendMessage(Lang.get("gamemode.InvalidGamemode")
+    								.replaceAll("%mod%", mod));
 
     	}
     	

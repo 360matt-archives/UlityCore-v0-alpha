@@ -23,25 +23,31 @@ public class GmaCommandExecutor implements CommandExecutor {
     		Player playerTarget = null;
     		
     		if (args.length != 0) {
-    			if (Permissions.hasPrivileges_ShowError(sender)) {
+    			if (!Permissions.hasPrivileges(sender) 
+    			&& !sender.hasPermission("ulity.gamemode.other") 
+    			&& !sender.hasPermission("ulity.gm.other")) {
+    				sender.sendMessage(Lang.get("gamemode.no_perm_other"));
     				return true;
     			}
             	if (MainBukkit.server.getPlayer(args[0]) == null) {
-            		sender.sendMessage(Lang.get("msg.InvalidPlayer").replaceAll("%name%", args[0]));
+            		sender.sendMessage(Lang.get("msg.InvalidPlayer")
+            						.replaceAll("%name%", args[0]));
             		return true;
             	}
-            	else {
+            	else 
             		playerTarget = MainBukkit.server.getPlayer(args[0]);
-            	}
     		}
     		else 
     			playerTarget = (Player) sender;
     		
 			playerTarget.setGameMode(GameMode.ADVENTURE);
-			playerTarget.sendMessage(Lang.get("gamemode.GamemodeNotification").replaceAll("%mod%", Lang.get("gamemode.adventure")));
+			playerTarget.sendMessage(Lang.get("gamemode.GamemodeNotification")
+									.replaceAll("%mod%", Lang.get("gamemode.adventure")));
 			
 			if (sender.getName() != playerTarget.getName())
-				sender.sendMessage(Lang.get("gamemode.ChangeGamemodeOther").replaceAll("%mod%", Lang.get("gamemode.adventure")).replaceAll("%name%", playerTarget.getName()));
+				sender.sendMessage(Lang.get("gamemode.ChangeGamemodeOther")
+									.replaceAll("%mod%", Lang.get("gamemode.adventure"))
+									.replaceAll("%name%", playerTarget.getName()));
    		
     	}
     	

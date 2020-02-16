@@ -33,12 +33,6 @@ msg:
    InvalidPlayer:
      fr: "&7le joueur &c%name% &7est invalide"
      en: "&7The player &c%name% &7is invalid"
-   FlyNotification:
-     fr: "&7Mode fly %stat%"
-     en: "&7Fly mod %stat%"
-   ChangeFlyOther:
-     fr: "&7Le mode fly de &b%name% &7est %stat%"
-     en: "&7The fly mod of &b%name% was %stat%"
    TempReloaded:
      fr: "&7Les variables temporaire ont bien étés rechargés"
      en: "&7temporary datas was successfully reloaded"
@@ -48,6 +42,16 @@ msg:
    ArgsList:
      fr: "Liste des arguments"
      en: "Arguments list"
+fly:
+  no_perm_other:
+    fr: "&cTu ne peux pas changer le mode fly d'un autre joueur"
+    en: "&cYou don't allowed to change the player's fly mode"
+  notification:
+     fr: "&7Mode fly %stat%"
+     en: "&7Fly mod %stat%"
+  changeFlyOther:
+     fr: "&7Le mode fly de &b%name% &7est %stat%"
+     en: "&7The fly mod of &b%name% was %stat%"
 heal:
   HealNotification:
     fr: "&7Votre niveau de santé vient de se &6remplir"
@@ -137,6 +141,9 @@ gamemode:
   InvalidGamemode:
     fr: "&7Le mode de jeu &6%mod% &7est &cinvalide"
     en: "&7The &6%mod% gamemode &7is &cinvalid"
+  no_perm_other:
+    fr: "&cTu ne peux pas changer le gamemode d'un autre joueur"
+    en: "&cYou don't allowed to change the player's gamemode"
   creative:
     fr: "créatif"
     en: "creative"
