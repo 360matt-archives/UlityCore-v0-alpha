@@ -14,7 +14,7 @@ public class AutoReload {
 	        public void run() {
 	            ConfigManager.reloadAll();
 	        }
-	    }, 0L, 10*60*20L);
+	    }, 10*60*20L, 10*60*20L);
 	}
 	    
 	

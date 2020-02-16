@@ -26,7 +26,7 @@ public class Config extends Defaultconfig{
 	public Config (){ }
 	
 	public boolean reload() {
-		boolean canRegister = true;
+		boolean canRegister = false;
 		
 		if (configC != null) {
 			try {
@@ -53,8 +53,9 @@ public class Config extends Defaultconfig{
 		
 		configC = YamlConfiguration.loadConfiguration(configF);
 		
-		if (canRegister) 
+		if (canRegister)
 			ConfigManager.register(this);
+
 
 
 		
