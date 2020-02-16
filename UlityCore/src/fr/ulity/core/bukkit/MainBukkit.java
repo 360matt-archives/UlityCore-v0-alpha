@@ -1,8 +1,10 @@
 package fr.ulity.core.bukkit;
 
+import fr.ulity.core.bukkit.Tasks.AutoReload;
 import fr.ulity.core.bukkit.commands.*;
 import fr.ulity.core.bukkit.events.Banned;
 import fr.ulity.core.bukkit.events.ClearTemp;
+import fr.ulity.core.bukkit.gadgets.ConfigManager;
 
 import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
@@ -25,12 +27,11 @@ public class MainBukkit extends JavaPlugin {
     	plugin = this;
     	server = this.getServer();
 
+    	Temp.reload();
     	config.reload();
     	
     	Lang.reload();
     	
-
-    	Temp.reload();
     	
     	pMan = server.getPluginManager();
     	
@@ -41,6 +42,8 @@ public class MainBukkit extends JavaPlugin {
     			pMan.enablePlugin(x);
     		}
     	}
+    	
+    	AutoReload.run();
     	
     	pMan.registerEvents(new Banned(), this);
     	pMan.registerEvents(new ClearTemp(), this);
@@ -72,7 +75,7 @@ public class MainBukkit extends JavaPlugin {
     public void onDisable(){
     	
     	Lang.reload();
-    	config.reload();
+    	ConfigManager.reloadAll();
     	
     	for (Plugin x: pMan.getPlugins()) {
     		if (x.getDescription().getDepend().contains(plugin.getName())) {

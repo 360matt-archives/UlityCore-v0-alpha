@@ -11,6 +11,8 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import fr.ulity.core.bukkit.gadgets.ConfigManager;
+
 public class Config extends Defaultconfig{
 	private File configF;
 	public FileConfiguration configC;
@@ -24,6 +26,8 @@ public class Config extends Defaultconfig{
 	public Config (){ }
 	
 	public boolean reload() {
+		boolean canRegister = true;
+		
 		if (configC != null) {
 			try {
 				configC.save(configF);
@@ -31,6 +35,8 @@ public class Config extends Defaultconfig{
 				e.printStackTrace();
 			};
 		}
+		else
+			canRegister = true;
 		
 		configF = new File(MainBukkit.plugin.getDataFolder(), nameConf + ".yml");
 			
@@ -39,13 +45,17 @@ public class Config extends Defaultconfig{
 				configF.createNewFile();
 			}
 			catch(Exception e) {
-				System.out.println("§bUlity§c: ERREUR: impossible de créer le fichier de configuration §7" + nameConf);
+				System.out.println("§bUlity§c: FR: ERREUR: impossible de créer le fichier de configuration §7" + nameConf);
 				return false;
 			}
 				
 		}
 		
 		configC = YamlConfiguration.loadConfiguration(configF);
+		
+		if (canRegister) 
+			ConfigManager.register(this);
+
 
 		
 	if (nameConf.equals("config"))
@@ -142,7 +152,7 @@ public class Config extends Defaultconfig{
 			return null;
 	}
 
-	public  Object get(String key, Object value) {
+	public Object get(String key, Object value) {
 		if (!init())
 			return "";
 		if (!configC.isSet(key)) 

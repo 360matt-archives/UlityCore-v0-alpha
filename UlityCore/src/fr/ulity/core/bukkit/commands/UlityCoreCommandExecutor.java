@@ -5,7 +5,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import fr.ulity.core.bukkit.MainBukkit;
-import fr.ulity.core.bukkit.Temp;
 import fr.ulity.core.bukkit.utils.Permissions;
 import fr.ulity.core.bukkit.Config;
 import fr.ulity.core.bukkit.Lang;
@@ -38,14 +37,6 @@ public class UlityCoreCommandExecutor implements CommandExecutor {
     					MainBukkit.pMan.enablePlugin(MainBukkit.plugin);
     					
     					sender.sendMessage(Lang.get("msg.plugin_reloaded"));
-    					
-    					if (args.length >= 2) {
-		        			if (args[1].equals("temp") || args[1].equals("tmp")) {
-		                		Temp.reload();
-		                		sender.sendMessage(Lang.get("msg.TempReloaded"));
-		        			}
-
-		        		}
 
     				}
     				break;

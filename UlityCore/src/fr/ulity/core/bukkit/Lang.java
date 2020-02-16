@@ -13,8 +13,8 @@ import fr.ulity.core.bukkit.MainBukkit;
 
 public class Lang {
 	public static YamlConfiguration langC;
-	public static File langF;
-	static Config config = new Config();
+	private static File langF;
+	static Config config = MainBukkit.config;
 
 	public static void reload() {
 		File langDir = new File(MainBukkit.plugin.getDataFolder() + "/language/");

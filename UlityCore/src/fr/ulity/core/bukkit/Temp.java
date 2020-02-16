@@ -11,21 +11,12 @@ import org.bukkit.configuration.file.YamlConfiguration;
 public class Temp {
 	public static YamlConfiguration tempC;
 	
-	
-
-	
 	public static boolean reload() {
-		MainBukkit.plugin.saveDefaultConfig();
 		try {
-			
-			MainBukkit.plugin.reloadConfig();
-			
 			File tempF = new File(MainBukkit.plugin.getDataFolder(), "temp.yml");
-
 			tempC = YamlConfiguration.loadConfiguration(tempF);
 		    	
 			System.out.println("§bUlity§7: §eFichier temporaire rechargé");
-				
 			return true;
 		}
 		catch (Exception e) {
@@ -34,18 +25,22 @@ public class Temp {
 		}
     }
 
-	
-	
-	
+	private static boolean init () {
+		if (tempC == null)
+			reload();
+		if (tempC == null)
+			return false;
+		return true;
+	}
 	
 	public static String getString (String key) {
+		if (!init())
+			return "";
 		return tempC.getString(key);
 	}
 
 	public static String getString(String key, @Nullable String value) {
-		if (tempC == null)
-			reload();
-		if (tempC == null)
+		if (!init())
 			return "";
 		if (getString(key) == null) 
 			tempC.addDefault(key, value);
@@ -54,9 +49,7 @@ public class Temp {
 	}
 
 	public static int getInt(String key, @Nullable int value) {
-		if (tempC == null) 
-			reload();
-		if (tempC == null)
+		if (!init())
 			return 0;
 		if (tempC.get(key) == null) 
 			tempC.addDefault(key, value);
@@ -65,13 +58,13 @@ public class Temp {
 	}
 	
 	public static Object get (String key) {
+		if (!init())
+			return null;
 		return tempC.get(key); 
 	}
 
 	public static String get(String key, Object value) {
-		if (tempC == null) 
-			reload();
-		if (tempC == null)
+		if (!init())
 			return "";
 		if (get(key) == null) 
 			tempC.addDefault(key, value);
@@ -80,9 +73,7 @@ public class Temp {
 	}
 
 	public static boolean isSet (String key) {
-		if (tempC == null) 
-			reload();
-		if (tempC == null)
+		if (!init())
 			return false;
 		if (tempC.isSet(key))
 			return true;
@@ -91,25 +82,22 @@ public class Temp {
 	}
 
 	public static void set (String key, Object value) { 
-		if (tempC == null) 
-			reload();
-		if (tempC == null)
+		if (!init())
 			return;
 		tempC.set(key, value); 
 	}
 
 	public static void delete (String key) { 
-		if (tempC == null) 
-			reload();
-		if (tempC == null)
+		if (!init())
 			return;
 		tempC.set(key, null); 
 	}
 
 	public static void deleteList (String key) {
+		if (!init())
+			return;
 
-		for(String x : tempC.getKeys(true))
-		{
+		for(String x : tempC.getKeys(true)){
 		    if (x.contains(key)) {
 		    	tempC.set(x, null);
 		    }
