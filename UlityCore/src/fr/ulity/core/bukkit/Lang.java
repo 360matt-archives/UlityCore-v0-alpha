@@ -48,7 +48,8 @@ public class Lang {
 	    for(String key : langRefC.getKeys(true)){
 	        if (key.contains("." + Config.lang)) {
 	        	if (!key.equals("lang." + Config.lang))
-	        		langC.set(key.replaceAll("." + Config.lang, ""), langRefC.getString(key));
+	        		if (!langC.isSet(key.replaceAll("." + Config.lang, "")))
+	        			langC.set(key.replaceAll("." + Config.lang, ""), langRefC.getString(key));
 	        }
 	    }
 	    
