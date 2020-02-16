@@ -4,6 +4,7 @@ import fr.ulity.core.bukkit.Tasks.AutoReload;
 import fr.ulity.core.bukkit.commands.*;
 import fr.ulity.core.bukkit.events.Banned;
 import fr.ulity.core.bukkit.events.ClearTemp;
+import fr.ulity.core.bukkit.gadgets.Bstat_metric;
 import fr.ulity.core.bukkit.gadgets.ConfigManager;
 
 import org.bukkit.Server;
@@ -44,6 +45,9 @@ public class MainBukkit extends JavaPlugin {
     	}
     	
     	AutoReload.run();
+    	
+    	@SuppressWarnings("unused")
+		Bstat_metric metrics = new Bstat_metric(this, 6520);
     	
     	pMan.registerEvents(new Banned(), this);
     	pMan.registerEvents(new ClearTemp(), this);
